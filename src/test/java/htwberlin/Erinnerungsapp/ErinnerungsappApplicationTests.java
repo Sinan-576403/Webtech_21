@@ -8,7 +8,6 @@ class ErinnerungsappApplicationTests {
 
 	@Test
 	void contextLoads() {
-		throw new RuntimeException("Test");
 	}
 
 }
