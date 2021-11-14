@@ -1,7 +1,7 @@
 package htwberlin.Erinnerungsapp.web.service;
 
 import htwberlin.Erinnerungsapp.web.api.Person;
-import htwberlin.Erinnerungsapp.web.api.PersonCreateRequest;
+import htwberlin.Erinnerungsapp.web.api.PersonManipulationRequest;
 import htwberlin.Erinnerungsapp.web.persistence.PersonEntity;
 import htwberlin.Erinnerungsapp.web.persistence.PersonRepository;
 import org.springframework.stereotype.Service;
@@ -31,11 +31,27 @@ public class PersonService {
         return personEntity.map(this::transformEntity).orElse(null);
     }
 
-    public Person create(PersonCreateRequest request) {
+    public Person create(PersonManipulationRequest request) {
         var personEntity = new PersonEntity(request.getFirstName(), request.getLastName(), request.isVaccinated());
         personEntity = personRepository.save(personEntity);
         return transformEntity(personEntity);
     }
+
+    public Person update(Long id, PersonManipulationRequest request) {
+        var personEntityOptional = personRepository.findById(id);
+        if (personEntityOptional.isEmpty()) {
+            return null;
+        }
+
+        var personEntity = personEntityOptional.get();
+        personEntity.setFirstName(request.getFirstName());
+        personEntity.setLastName(request.getLastName());
+        personEntity.setVaccinated(request.isVaccinated());
+        personEntity = personRepository.save(personEntity);
+
+        return transformEntity(personEntity);
+    }
+
 
     private Person transformEntity(PersonEntity personEntity) {
         return new Person(
