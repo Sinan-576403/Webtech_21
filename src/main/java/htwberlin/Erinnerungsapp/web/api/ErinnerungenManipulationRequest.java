@@ -1,12 +1,12 @@
 package htwberlin.Erinnerungsapp.web.api;
 
-public class PersonManipulationRequest {
+public class ErinnerungenManipulationRequest {
 
     private String firstName;
     private String lastName;
     private boolean vaccinated;
 
-    public PersonManipulationRequest(String firstName, String lastName, boolean vaccinated) {
+    public ErinnerungenManipulationRequest(String firstName, String lastName, boolean vaccinated) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.vaccinated = vaccinated;

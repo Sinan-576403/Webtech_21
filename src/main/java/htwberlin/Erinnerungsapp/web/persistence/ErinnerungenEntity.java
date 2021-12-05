@@ -1,25 +1,34 @@
-package htwberlin.Erinnerungsapp.web.api;
+package htwberlin.Erinnerungsapp.web.persistence;
 
-public class Person {
+import javax.persistence.*;
 
+@Entity(name = "Erinnerungen")
+public class ErinnerungenEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Wichtigkeit")
     private long id;
+
+    @Column(name = "Aufgabe_1", nullable = false)
     private String firstName;
+
+    @Column(name = "Aufgabe_2", nullable = false)
     private String lastName;
+
+    @Column(name = "ist_erledigt")
     private boolean vaccinated;
 
-    public Person(long id, String firstName, String lastName, boolean vaccinated) {
-        this.id = id;
+    public ErinnerungenEntity(String firstName, String lastName, boolean vaccinated) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.vaccinated = vaccinated;
     }
 
+    protected ErinnerungenEntity() {}
+
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
