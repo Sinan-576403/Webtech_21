@@ -21,34 +21,34 @@ public class ErinnerungRestController {
     }
 
 
-    @GetMapping(path = "/api/v1/Erinnerungen")
-    public ResponseEntity<List<Erinnerung>> fetcherinnerungen(){
+    @GetMapping(path = "/api/v1/erinnerung")
+    public ResponseEntity<List<Erinnerung>> fetchErinnerungen(){
         return ResponseEntity.ok(erinnerungService.findAll());
 
     }
 
-    @GetMapping(path = "/api/v1/Erinnerungen/{id}")
+    @GetMapping(path = "/api/v1/erinnerung/{id}")
     public ResponseEntity<Erinnerung>fetchErinnerungById(@PathVariable Long id){
         var erinnerung = erinnerungService.findById(id);
         return erinnerung != null? ResponseEntity.ok(erinnerung): ResponseEntity.notFound().build();
     }
 
-    @PostMapping(path = "/api/v1/Erinnerungen")
+    @PostMapping(path = "/api/v1/erinnerung")
     public ResponseEntity<Void> createErinnerung(@RequestBody ErinnerungManipulationRequest request) throws URISyntaxException {
         var erinnerung= erinnerungService.create(request);
-        URI uri = new URI("/api/v1/Erinnerungen/"+ erinnerung.getId());
+        URI uri = new URI("/api/v1/erinnerung/"+ erinnerung.getId());
         return ResponseEntity.created(uri).build();
 
 
     }
-    @PutMapping(path = "/api/v1/Erinnerungen/{id}")
+    @PutMapping(path = "/api/v1/erinnerung/{id}")
     public ResponseEntity<Erinnerung> updateErinnerung(@PathVariable Long id, @RequestBody ErinnerungManipulationRequest request) {
         var erinnerung = erinnerungService.update(id, request);
         return erinnerung != null? ResponseEntity.ok(erinnerung): ResponseEntity.notFound().build();
 
     }
 
-    @DeleteMapping(path = "/api/v1/Erinnerungen/{id}")
+    @DeleteMapping(path = "/api/v1/erinnerung/{id}")
     public ResponseEntity<Void> deleteErinnerung(@PathVariable Long id){
         boolean successful = erinnerungService.deleteById(id);
         return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
