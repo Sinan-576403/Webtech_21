@@ -6,9 +6,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ErinnerungenRepository extends JpaRepository<ErinnerungenEntity, Long > {
+public interface ErinnerungRepository extends JpaRepository<ErinnerungEntity, Long > {
 
-    List<ErinnerungenEntity> findAllByFirstName(String firstName);
+    List<ErinnerungEntity> findAllByErsteAufgabe(String ersteAufgabe);
 
 
 }
