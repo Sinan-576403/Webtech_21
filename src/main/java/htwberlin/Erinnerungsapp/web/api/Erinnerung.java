@@ -6,12 +6,14 @@ public class Erinnerung {
     private String ersteAufgabe;
     private String nachsteAufgabe;
     private boolean erledigt;
+    private String job;
 
-    public Erinnerung(long id, String ersteAufgabe, String nachsteAufgabe, boolean erledigt) {
+    public Erinnerung(long id, String ersteAufgabe, String nachsteAufgabe, boolean erledigt,String job) {
         this.id = id;
         this.ersteAufgabe = ersteAufgabe;
         this.nachsteAufgabe = nachsteAufgabe;
         this.erledigt = erledigt;
+        this.job = job;
     }
 
     public long getId() {
@@ -44,5 +46,13 @@ public class Erinnerung {
 
     public void setErledigt(boolean erledigt) {
         this.erledigt = erledigt;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
     }
 }

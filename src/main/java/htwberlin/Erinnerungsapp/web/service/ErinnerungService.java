@@ -32,7 +32,7 @@ public class ErinnerungService {
     }
 
     public Erinnerung create(ErinnerungManipulationRequest request) {
-        var erinnerungEntity = new ErinnerungEntity(request.getErsteAufgabe(), request.getNachsteAufgabe(), request.isErledigt());
+        var erinnerungEntity = new ErinnerungEntity(request.getErsteAufgabe(), request.getNachsteAufgabe(), request.isErledigt(),request.getJob());
         erinnerungEntity = erinnerungRepository.save(erinnerungEntity);
         return transformEntity(erinnerungEntity);
     }
@@ -47,6 +47,7 @@ public class ErinnerungService {
         erinnerungEntity.setErsteAufgabe(request.getErsteAufgabe());
         erinnerungEntity.setNachsteAufgabe(request.getNachsteAufgabe());
         erinnerungEntity.setErledigt(request.isErledigt());
+        erinnerungEntity.setJob(request.getJob());
         erinnerungEntity = erinnerungRepository.save(erinnerungEntity);
 
         return transformEntity(erinnerungEntity);
@@ -69,7 +70,8 @@ public class ErinnerungService {
                 erinnerungEntity.getId(),
                 erinnerungEntity.getErsteAufgabe(),
                 erinnerungEntity.getNachsteAufgabe(),
-                erinnerungEntity.isErledigt()
+                erinnerungEntity.isErledigt(),
+                erinnerungEntity.getJob()
         );
 
 

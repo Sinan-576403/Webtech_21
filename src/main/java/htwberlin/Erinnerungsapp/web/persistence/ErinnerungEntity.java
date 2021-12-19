@@ -19,10 +19,14 @@ public class ErinnerungEntity {
     @Column(name = "ist_erledigt")
     private boolean erledigt;
 
-    public ErinnerungEntity(String ersteAufgabe, String nachsteAufgabe, boolean erledigt) {
+    @Column(name = "TODO")
+    private String job;
+
+    public ErinnerungEntity(String ersteAufgabe, String nachsteAufgabe, boolean erledigt, String job) {
         this.ersteAufgabe = ersteAufgabe;
         this.nachsteAufgabe = nachsteAufgabe;
         this.erledigt = erledigt;
+        this.job = job;
     }
 
     protected ErinnerungEntity() {}
@@ -54,4 +58,16 @@ public class ErinnerungEntity {
     public void setErledigt(boolean erledigt) {
         this.erledigt = erledigt;
     }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+
+
+
 }
