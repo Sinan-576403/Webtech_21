@@ -1,18 +1,23 @@
 package htwberlin.Erinnerungsapp.web.api;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 public class ErinnerungManipulationRequest {
 
-    private String ersteAufgabe;
-    private String nachsteAufgabe;
-    private boolean erledigt;
-    private String job;
+        @Size(min = 2, message = "Geben sie mind. 2 Buchstaben an.")
+        private String ersteAufgabe;
 
-    public ErinnerungManipulationRequest(String ersteAufgabe, String nachsteAufgabe, boolean erledigt,String job) {
-        this.ersteAufgabe = ersteAufgabe;
-        this.nachsteAufgabe = nachsteAufgabe;
-        this.erledigt = erledigt;
-        this.job = job;
-    }
+        @NotBlank(message = "Die nächste Aufgabe darf nicht leer sein .")
+        private String nachsteAufgabe;
+
+        @Pattern(
+            regexp = "planen|sport|kochen|termin|freizeit|ha",
+            message = "Geben Sie planen,sport, kochen, termin, freizeit oder ha an")
+        private String job;
+        private boolean erledigt;
+
 
     public ErinnerungManipulationRequest() {}
 

@@ -7,6 +7,7 @@ import htwberlin.Erinnerungsapp.web.service.ErinnerungService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -34,13 +35,12 @@ public class ErinnerungRestController {
     }
 
     @PostMapping(path = "/api/v1/erinnerung")
-    public ResponseEntity<Void> createErinnerung(@RequestBody ErinnerungManipulationRequest request) throws URISyntaxException {
-        var erinnerung= erinnerungService.create(request);
-        URI uri = new URI("/api/v1/erinnerung/"+ erinnerung.getId());
+    public ResponseEntity<Void> createErinnerung(@Valid @RequestBody ErinnerungManipulationRequest request) throws URISyntaxException {
+        var erinnerung = erinnerungService.create(request);
+        URI uri = new URI("/api/v1/erinnerung/" + erinnerung.getId());
         return ResponseEntity.created(uri).build();
-
-
     }
+
     @PutMapping(path = "/api/v1/erinnerung/{id}")
     public ResponseEntity<Erinnerung> updateErinnerung(@PathVariable Long id, @RequestBody ErinnerungManipulationRequest request) {
         var erinnerung = erinnerungService.update(id, request);
