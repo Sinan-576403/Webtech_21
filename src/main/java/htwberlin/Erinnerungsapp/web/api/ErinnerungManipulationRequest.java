@@ -9,7 +9,6 @@ public class ErinnerungManipulationRequest {
         @Size(min = 2, message = "Geben sie mind. 2 Buchstaben an.")
         private String ersteAufgabe;
 
-        @NotBlank(message = "Die nächste Aufgabe darf nicht leer sein .")
         private String nachsteAufgabe;
 
         @Pattern(
