@@ -16,6 +16,7 @@ public class ErinnerungManipulationRequest {
             message = "Geben Sie planen,sport, kochen, termin, freizeit oder ha an")
         private String job;
         private boolean erledigt;
+        private String art;
 
 
     public ErinnerungManipulationRequest() {}
@@ -50,5 +51,13 @@ public class ErinnerungManipulationRequest {
 
     public void setJob(String job) {
         this.job = job;
+    }
+
+    public String getArt() {
+        return art;
+    }
+
+    public void setArt(String art) {
+        this.art = art;
     }
 }

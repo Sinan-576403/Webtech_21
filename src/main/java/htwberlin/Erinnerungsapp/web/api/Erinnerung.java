@@ -7,13 +7,15 @@ public class Erinnerung {
     private String nachsteAufgabe;
     private boolean erledigt;
     private String job;
+    private String art;
 
-    public Erinnerung(long id, String ersteAufgabe, String nachsteAufgabe, boolean erledigt,String job) {
+    public Erinnerung(long id, String ersteAufgabe, String nachsteAufgabe, boolean erledigt, String job, String art ) {
         this.id = id;
         this.ersteAufgabe = ersteAufgabe;
         this.nachsteAufgabe = nachsteAufgabe;
         this.erledigt = erledigt;
         this.job = job;
+        this.art = art;
     }
 
     public long getId() {
@@ -55,4 +57,13 @@ public class Erinnerung {
     public void setJob(String job) {
         this.job = job;
     }
+
+    public String getArt() {
+        return art;
+    }
+
+    public void getArt(String art) {
+        this.art = art;
+    }
+
 }

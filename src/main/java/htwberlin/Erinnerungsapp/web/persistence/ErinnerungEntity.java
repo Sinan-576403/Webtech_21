@@ -22,11 +22,15 @@ public class ErinnerungEntity {
     @Column(name = "TODO")
     private String job;
 
-    public ErinnerungEntity(String ersteAufgabe, String nachsteAufgabe, boolean erledigt, String job) {
+    @Column(name = "TYP")
+    private String art;
+
+    public ErinnerungEntity(String ersteAufgabe, String nachsteAufgabe, boolean erledigt, String job, String art) {
         this.ersteAufgabe = ersteAufgabe;
         this.nachsteAufgabe = nachsteAufgabe;
         this.erledigt = erledigt;
         this.job = job;
+        this.art = art;
     }
 
     protected ErinnerungEntity() {}
@@ -66,6 +70,15 @@ public class ErinnerungEntity {
     public void setJob(String job) {
         this.job = job;
     }
+
+    public String getArt() {
+        return art;
+    }
+
+    public void setArt(String job) {
+        this.art = art;
+    }
+
 
 
 
